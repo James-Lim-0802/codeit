@@ -188,16 +188,28 @@
 #     st.header("제목3")
 #     st.text("column 3")
 
+# import streamlit as st
+
+# tab1, tab2, tab3 = st.tabs(["Python", "Streamlit", "Pandas"])
+
+# with tab1:
+#     st.header("Python")
+#     st.text("I ❤️ Python")
+# with tab2:
+#     st.header("Streamlit")
+#     st.text("I ❤️ Streamlit")
+# with tab3:
+#     st.header("Pandas")
+#     st.text("I ❤️ Pandas")
+
+
 import streamlit as st
 
-tab1, tab2, tab3 = st.tabs(["Python", "Streamlit", "Pandas"])
+if "number" not in st.session_state:
+    st.session_state["number"] = 1
+st.text(st.session_state["number"])
 
-with tab1:
-    st.header("Python")
-    st.text("I ❤️ Python")
-with tab2:
-    st.header("Streamlit")
-    st.text("I ❤️ Streamlit")
-with tab3:
-    st.header("Pandas")
-    st.text("I ❤️ Pandas")
+clicked = st.button("더하기")
+if clicked:
+    st.session_state["number"] += 1
+    st.rerun()
